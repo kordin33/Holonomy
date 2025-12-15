@@ -19,14 +19,14 @@ Obecny stan badań nad detekcją deepfake pokazuje, że **proste fine-tuning got
 - **36 metod detekcji** (28 image + 8 video)
 - Najnowsze SOTA modele:
 
-| Model | Konferencja | Kluczowa innowacja |
-|-------|-------------|---------------------|
-| **EFFORT** | ICML'25 Spotlight | Najlepsza generalizacja cross-dataset |
-| **LSDA** | CVPR'24 | Large-Scale Domain Adaptation |
-| **FreqNet** | AAAI'24 | Frequency-aware detection |
-| **TALL** | ICCV'23 | Temporal anti-forgery learning |
-| **SBI** | CVPR'22 | Self-Blended Images (fundament!) |
-| **Face X-ray** | CVPR'20 | Blending boundary detection |
+| Model         | Konferencja           | Kluczowa innowacja                    |
+|---------------|-----------------------|---------------------------------------|
+| **EFFORT**    | ICML'25 Spotlight     | Najlepsza generalizacja cross-dataset |
+| **LSDA**      | CVPR'24               | Large-Scale Domain Adaptation         |
+| **FreqNet**   | AAAI'24               | Frequency-aware detection             |
+| **TALL**      | ICCV'23               | Temporal anti-forgery learning        |
+| **SBI**       | CVPR'22               | Self-Blended Images (fundament!)      |
+| **Face X-ray**| CVPR'20               | Blending boundary detection           |
 
 ### 2. **Kluczowe Papery do Przeczytania**
 
@@ -62,7 +62,7 @@ Obecny stan badań nad detekcją deepfake pokazuje, że **proste fine-tuning got
 
 ## 🎯 Gdzie Można Wprowadzić INNOWACJĘ
 
-### **Obszar 1: Frequency-Domain Analysis (GORĄCO POLECAM! 🔥)**
+### **Obszar 1: Frequency-Domain Analysis ()**
 
 **Problem:** Deepfake zostawia artefakty w dziedzinie częstotliwości (np. GAN fingerprints).
 
@@ -267,13 +267,13 @@ class TemporalConsistencyModule(nn.Module):
 
 ## 📁 Główne Datasety do Użycia
 
-| Dataset | Opis | Linki |
-|---------|------|-------|
-| **FaceForensics++** | 1000 videosów, 4 metody manipulacji | [Link](https://github.com/ondyari/FaceForensics) |
-| **Celeb-DF (v2)** | 590 celebrytów, wysoka jakość | [Link](https://github.com/yuezunli/celeb-deepfakeforensics) |
-| **DFDC** | Facebook challenge, 100k+ videosów | [Link](https://ai.facebook.com/datasets/dfdc/) |
-| **DeeperForensics** | Real-world perturbacje | [Link](https://github.com/EndlessSora/DeeperForensics-1.0) |
-| **WildDeepfake** | "In-the-wild" deepfakes | [Paper](https://arxiv.org/abs/2101.01456) |
+| Dataset                | Opis                                | Linki                                                      |
+|------------------------|-------------------------------------|------------------------------------------------------------|
+| **FaceForensics++**    | 1000 videosów, 4 metody manipulacji | [Link](https://github.com/ondyari/FaceForensics)           |
+| **Celeb-DF (v2)**      | 590 celebrytów, wysoka jakość       | [Link](https://github.com/yuezunli/celeb-deepfakeforensics)|
+| **DFDC**               | Facebook challenge, 100k+ videosów  | [Link](https://ai.facebook.com/datasets/dfdc/)             |
+| **DeeperForensics**    | Real-world perturbacje              | [Link](https://github.com/EndlessSora/DeeperForensics-1.0) |
+| **WildDeepfake**       | "In-the-wild" deepfakes             | [Paper](https://arxiv.org/abs/2101.01456)                  |
 
 ---
 
@@ -281,34 +281,34 @@ class TemporalConsistencyModule(nn.Module):
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                 HYBRID DEEPFAKE DETECTOR                     │
+│                 HYBRID DEEPFAKE DETECTOR                    │
 ├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Input Image (224x224)                                       │
-│         │                                                    │
+│                                                             │
+│  Input Image (224x224)                                      │
+│         │                                                   │
 │         ├────────────┬────────────┬────────────┐            │
 │         │            │            │            │            │
 │         ▼            ▼            ▼            ▼            │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │ Spatial  │  │Frequency │  │ Blending │  │Face Crop │    │
-│  │  Branch  │  │  Branch  │  │ Boundary │  │  Branch  │    │
-│  │(ViT/Eff) │  │(FFT/DCT) │  │ (X-ray)  │  │(Face Det)│    │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘    │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐     │
+│  │ Spatial  │  │Frequency │  │ Blending │  │Face Crop │     │
+│  │  Branch  │  │  Branch  │  │ Boundary │  │  Branch  │     │
+│  │(ViT/Eff) │  │(FFT/DCT) │  │ (X-ray)  │  │(Face Det)│     │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘     │
 │       │             │             │             │           │
 │       └─────────────┴──────┬──────┴─────────────┘           │
-│                            │                                 │
-│                            ▼                                 │
+│                            │                                │
+│                            ▼                                │
 │                  ┌─────────────────┐                        │
 │                  │ Attention Fusion│                        │
 │                  │     Module      │                        │
 │                  └────────┬────────┘                        │
-│                           │                                  │
-│                           ▼                                  │
+│                           │                                 │
+│                           ▼                                 │
 │                  ┌─────────────────┐                        │
 │                  │   Classifier    │                        │
 │                  │   (Real/Fake)   │                        │
 │                  └─────────────────┘                        │
-│                                                              │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
