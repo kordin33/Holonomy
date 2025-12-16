@@ -244,8 +244,10 @@ class DINOv2Encoder(BaseEncoder):
     """
     DINOv2 Encoder - Meta's Self-Supervised Vision Transformer
     
-    Dla przyszłych stopni - może dawać lepsze wyniki niż CLIP
-    dla pure-vision tasks.
+    Advantages over CLIP:
+    - Better at capturing local textures and patterns
+    - Self-supervised (no text supervision bias)
+    - May detect frequency artifacts better
     """
     
     def __init__(self, device: str = "cuda"):
@@ -260,6 +262,19 @@ class DINOv2Encoder(BaseEncoder):
             param.requires_grad = False
         
         self.embedding_dim = 768
+        
+        # DINOv2 preprocessing
+        from torchvision import transforms
+        self.preprocess = transforms.Compose([
+            transforms.Resize(224),
+            transforms.CenterCrop(224),
+            transforms.ToTensor(),
+            transforms.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
+            ),
+        ])
+        
         print(f"  ✓ DINOv2 loaded, embedding dim: {self.embedding_dim}")
     
     @torch.no_grad()
@@ -272,3 +287,50 @@ class DINOv2Encoder(BaseEncoder):
         embedding = embedding / embedding.norm(dim=-1, keepdim=True)
         
         return embedding.float()
+    
+    @torch.no_grad()
+    def encode_pil(self, image: Image.Image) -> np.ndarray:
+        """Encode single PIL Image."""
+        image_tensor = self.preprocess(image).unsqueeze(0).to(self.device)
+        embedding = self.encode_image(image_tensor)
+        return embedding.cpu().numpy().flatten()
+    
+    @torch.no_grad()
+    def encode_batch(
+        self,
+        images: List[Image.Image],
+        batch_size: int = 32,
+        show_progress: bool = True,
+    ) -> np.ndarray:
+        """
+        Encode batch of PIL Images.
+        
+        Args:
+            images: List of PIL Images
+            batch_size: Batch size for processing
+            show_progress: Show progress bar
+            
+        Returns:
+            Embeddings [N, dim]
+        """
+        all_embeddings = []
+        
+        iterator = range(0, len(images), batch_size)
+        if show_progress:
+            iterator = tqdm(iterator, desc="Encoding images (DINOv2)")
+        
+        for i in iterator:
+            batch = images[i:i+batch_size]
+            
+            # Preprocess batch
+            batch_tensors = torch.stack([
+                self.preprocess(img) for img in batch
+            ]).to(self.device)
+            
+            # Encode
+            embeddings = self.model(batch_tensors)
+            embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
+            
+            all_embeddings.append(embeddings.cpu().numpy())
+        
+        return np.vstack(all_embeddings)

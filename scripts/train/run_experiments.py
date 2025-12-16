@@ -26,23 +26,23 @@ import torch.nn as nn
 
 # Import from our package
 import sys
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parents[2]))
 
-from deepfake_research.config import ExperimentConfig, EXPERIMENT_CONFIGS, DataConfig, ModelConfig, TrainingConfig
-from deepfake_research.models.factory import create_model, list_models
-from deepfake_research.data.datasets import create_dataloaders
-from deepfake_research.training.trainer import Trainer
-from deepfake_research.training.optimizers import get_optimizer, get_scheduler
-from deepfake_research.training.losses import DeepfakeLoss
-from deepfake_research.evaluation.benchmark import Benchmark
-from deepfake_research.evaluation.visualization import (
+from deepfake_guard.config import ExperimentConfig, EXPERIMENT_CONFIGS, DataConfig, ModelConfig, TrainingConfig
+from deepfake_guard.models.factory import create_model, list_models
+from deepfake_guard.data.datasets import create_dataloaders
+from deepfake_guard.training.trainer import Trainer
+from deepfake_guard.training.optimizers import get_optimizer, get_scheduler
+from deepfake_guard.training.losses import DeepfakeLoss
+from deepfake_guard.evaluation.benchmark import Benchmark
+from deepfake_guard.evaluation.visualization import (
     plot_confusion_matrix,
     plot_roc_curve,
     plot_cross_dataset_heatmap,
     plot_model_comparison,
     plot_training_history,
 )
-from deepfake_research.utils.cuda_utils import (
+from deepfake_guard.utils.cuda_utils import (
     setup_cuda_optimizations,
     compile_model,
     print_cuda_memory_stats,

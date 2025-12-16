@@ -20,18 +20,18 @@ import torch
 import numpy as np
 
 # Add project to path
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parents[2]))
 
-from deepfake_research.utils.cuda_utils import (
+from deepfake_guard.utils.cuda_utils import (
     setup_cuda_optimizations,
     print_cuda_memory_stats,
     clear_cuda_cache,
 )
-from deepfake_research.embeddings.stage1_baseline import (
+from deepfake_guard.embeddings.stage1_baseline import (
     Stage1BaselineDetector,
     Stage1Config,
 )
-from deepfake_research.embeddings.visualization import EmbeddingVisualizer
+from deepfake_guard.embeddings.visualization import EmbeddingVisualizer
 
 
 def check_gpu():

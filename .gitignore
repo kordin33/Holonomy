@@ -93,3 +93,7 @@ logs/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+#token
+.token
+token   

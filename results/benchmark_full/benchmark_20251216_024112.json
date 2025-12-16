@@ -1,0 +1,202 @@
+[
+  {
+    "encoder": "ViT-B/32",
+    "features": "RGB",
+    "classifier": "kNN",
+    "feature_dim": 512,
+    "overall_accuracy": 0.9783,
+    "overall_f1": 0.9474,
+    "confusion_matrix": [
+      [
+        470,
+        10
+      ],
+      [
+        3,
+        117
+      ]
+    ],
+    "per_method": {
+      "inpainting": 0.9833,
+      "insight": 1.0,
+      "real": 0.975,
+      "text2img": 0.95,
+      "wiki": 0.9833
+    }
+  },
+  {
+    "encoder": "ViT-B/32",
+    "features": "RGB",
+    "classifier": "SVM",
+    "feature_dim": 512,
+    "overall_accuracy": 0.985,
+    "overall_f1": 0.9617,
+    "confusion_matrix": [
+      [
+        478,
+        2
+      ],
+      [
+        7,
+        113
+      ]
+    ],
+    "per_method": {
+      "inpainting": 1.0,
+      "insight": 1.0,
+      "real": 0.9417,
+      "text2img": 0.9917,
+      "wiki": 0.9917
+    }
+  },
+  {
+    "encoder": "ViT-B/32",
+    "features": "RGB+FFT",
+    "classifier": "kNN",
+    "feature_dim": 576,
+    "overall_accuracy": 0.9583,
+    "overall_f1": 0.9035,
+    "confusion_matrix": [
+      [
+        458,
+        22
+      ],
+      [
+        3,
+        117
+      ]
+    ],
+    "per_method": {
+      "inpainting": 0.9667,
+      "insight": 1.0,
+      "real": 0.975,
+      "text2img": 0.9083,
+      "wiki": 0.9417
+    }
+  },
+  {
+    "encoder": "ViT-B/32",
+    "features": "RGB+FFT",
+    "classifier": "SVM",
+    "feature_dim": 576,
+    "overall_accuracy": 0.8883,
+    "overall_f1": 0.6127,
+    "confusion_matrix": [
+      [
+        480,
+        0
+      ],
+      [
+        67,
+        53
+      ]
+    ],
+    "per_method": {
+      "inpainting": 1.0,
+      "insight": 1.0,
+      "real": 0.4417,
+      "text2img": 1.0,
+      "wiki": 1.0
+    }
+  },
+  {
+    "encoder": "ViT-L/14",
+    "features": "RGB",
+    "classifier": "kNN",
+    "feature_dim": 768,
+    "overall_accuracy": 0.9633,
+    "overall_f1": 0.9147,
+    "confusion_matrix": [
+      [
+        460,
+        20
+      ],
+      [
+        2,
+        118
+      ]
+    ],
+    "per_method": {
+      "inpainting": 0.9833,
+      "insight": 0.9833,
+      "real": 0.9833,
+      "text2img": 0.925,
+      "wiki": 0.9417
+    }
+  },
+  {
+    "encoder": "ViT-L/14",
+    "features": "RGB",
+    "classifier": "SVM",
+    "feature_dim": 768,
+    "overall_accuracy": 0.9867,
+    "overall_f1": 0.9658,
+    "confusion_matrix": [
+      [
+        479,
+        1
+      ],
+      [
+        7,
+        113
+      ]
+    ],
+    "per_method": {
+      "inpainting": 1.0,
+      "insight": 1.0,
+      "real": 0.9417,
+      "text2img": 0.9917,
+      "wiki": 1.0
+    }
+  },
+  {
+    "encoder": "ViT-L/14",
+    "features": "RGB+FFT",
+    "classifier": "kNN",
+    "feature_dim": 832,
+    "overall_accuracy": 0.94,
+    "overall_f1": 0.8667,
+    "confusion_matrix": [
+      [
+        447,
+        33
+      ],
+      [
+        3,
+        117
+      ]
+    ],
+    "per_method": {
+      "inpainting": 0.9667,
+      "insight": 0.9833,
+      "real": 0.975,
+      "text2img": 0.9083,
+      "wiki": 0.8667
+    }
+  },
+  {
+    "encoder": "ViT-L/14",
+    "features": "RGB+FFT",
+    "classifier": "SVM",
+    "feature_dim": 832,
+    "overall_accuracy": 0.91,
+    "overall_f1": 0.7097,
+    "confusion_matrix": [
+      [
+        480,
+        0
+      ],
+      [
+        54,
+        66
+      ]
+    ],
+    "per_method": {
+      "inpainting": 1.0,
+      "insight": 1.0,
+      "real": 0.55,
+      "text2img": 1.0,
+      "wiki": 1.0
+    }
+  }
+]

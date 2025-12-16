@@ -10,91 +10,91 @@ import sys
 from pathlib import Path
 
 # Add project to path
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parents[2]))
 
 def test_imports():
     """Test all imports"""
     print("Testing imports...")
     
     try:
-        from deepfake_research.config import ExperimentConfig, EXPERIMENT_CONFIGS
+        from deepfake_guard.config import ExperimentConfig, EXPERIMENT_CONFIGS
         print("  ✓ config")
     except Exception as e:
         print(f"  ✗ config: {e}")
         return False
     
     try:
-        from deepfake_research.models.backbones import BackboneFactory, get_backbone
+        from deepfake_guard.models.backbones import BackboneFactory, get_backbone
         print("  ✓ backbones")
     except Exception as e:
         print(f"  ✗ backbones: {e}")
         return False
     
     try:
-        from deepfake_research.models.frequency import FrequencyBranch, DCTBranch
+        from deepfake_guard.models.frequency import FrequencyBranch, DCTBranch
         print("  ✓ frequency")
     except Exception as e:
         print(f"  ✗ frequency: {e}")
         return False
     
     try:
-        from deepfake_research.models.attention import CBAM, ArtifactAttention
+        from deepfake_guard.models.attention import CBAM, ArtifactAttention
         print("  ✓ attention")
     except Exception as e:
         print(f"  ✗ attention: {e}")
         return False
     
     try:
-        from deepfake_research.models.hybrid import HybridDeepfakeDetector, UltimateDeepfakeDetector
+        from deepfake_guard.models.hybrid import HybridDeepfakeDetector, UltimateDeepfakeDetector
         print("  ✓ hybrid")
     except Exception as e:
         print(f"  ✗ hybrid: {e}")
         return False
     
     try:
-        from deepfake_research.models.factory import create_model, list_models
+        from deepfake_guard.models.factory import create_model, list_models
         print("  ✓ factory")
     except Exception as e:
         print(f"  ✗ factory: {e}")
         return False
     
     try:
-        from deepfake_research.data.augmentation import get_train_transforms, get_eval_transforms
+        from deepfake_guard.data.augmentation import get_train_transforms, get_eval_transforms
         print("  ✓ augmentation")
     except Exception as e:
         print(f"  ✗ augmentation: {e}")
         return False
     
     try:
-        from deepfake_research.data.sbi import SelfBlendedImageGenerator
+        from deepfake_guard.data.sbi import SelfBlendedImageGenerator
         print("  ✓ sbi")
     except Exception as e:
         print(f"  ✗ sbi: {e}")
         return False
     
     try:
-        from deepfake_research.training.trainer import Trainer
+        from deepfake_guard.training.trainer import Trainer
         print("  ✓ trainer")
     except Exception as e:
         print(f"  ✗ trainer: {e}")
         return False
     
     try:
-        from deepfake_research.training.losses import DeepfakeLoss, FocalLoss
+        from deepfake_guard.training.losses import DeepfakeLoss, FocalLoss
         print("  ✓ losses")
     except Exception as e:
         print(f"  ✗ losses: {e}")
         return False
     
     try:
-        from deepfake_research.evaluation.metrics import compute_metrics
+        from deepfake_guard.evaluation.metrics import compute_metrics
         print("  ✓ metrics")
     except Exception as e:
         print(f"  ✗ metrics: {e}")
         return False
     
     try:
-        from deepfake_research.evaluation.benchmark import Benchmark
+        from deepfake_guard.evaluation.benchmark import Benchmark
         print("  ✓ benchmark")
     except Exception as e:
         print(f"  ✗ benchmark: {e}")
@@ -107,7 +107,7 @@ def test_imports():
 def test_model_creation():
     """Test creating all models"""
     import torch
-    from deepfake_research.models.factory import create_model, list_models
+    from deepfake_guard.models.factory import create_model, list_models
     
     print("\nTesting model creation...")
     print(f"Available models: {list(list_models().keys())}")
@@ -154,7 +154,7 @@ def test_model_creation():
 def test_frequency_modules():
     """Test frequency analysis modules"""
     import torch
-    from deepfake_research.models.frequency import FrequencyBranch, DCTBranch, WaveletBranch
+    from deepfake_guard.models.frequency import FrequencyBranch, DCTBranch, WaveletBranch
     
     print("\nTesting frequency modules...")
     
@@ -192,7 +192,7 @@ def test_frequency_modules():
 def test_attention_modules():
     """Test attention modules"""
     import torch
-    from deepfake_research.models.attention import (
+    from deepfake_guard.models.attention import (
         SpatialAttention, ChannelAttention, CBAM, ArtifactAttention
     )
     
@@ -238,7 +238,7 @@ def test_sbi():
     """Test Self-Blended Images generator"""
     from PIL import Image
     import numpy as np
-    from deepfake_research.data.sbi import SelfBlendedImageGenerator
+    from deepfake_guard.data.sbi import SelfBlendedImageGenerator
     
     print("\nTesting SBI generator...")
     
