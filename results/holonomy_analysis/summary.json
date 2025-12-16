@@ -1,0 +1,29 @@
+{
+  "interpretation": {
+    "real_mean_holonomy": 0.6862410306930542,
+    "fake_mean_holonomy": 0.629651665687561,
+    "difference": 0.056589365005493164,
+    "relative_diff_percent": 8.987407684326172,
+    "cohens_d": 0.750340461730957,
+    "effect_size": "Medium"
+  },
+  "statistical_test": {
+    "t_statistic": 25.987140530632473,
+    "p_value": 2.05442070750784e-139,
+    "significant": true
+  },
+  "prediction_power": {
+    "mean_auc_single": 0.7158,
+    "best_auc_single": 0.7683222222222224,
+    "lr_auc": 0.7519753086419753,
+    "svm_auc": 0.7851851851851852,
+    "svm_accuracy": 0.7055555555555556,
+    "silhouette": 0.10432510077953339,
+    "strength": "STRONG"
+  },
+  "verdict": {
+    "hypothesis_confirmed": true,
+    "standalone_viable": true,
+    "good_as_feature": true
+  }
+}
