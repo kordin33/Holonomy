@@ -1,0 +1,67 @@
+[
+  {
+    "name": "H_raw only (baseline)",
+    "auc": 0.7559722222222223,
+    "acc": 0.7,
+    "best_params": {
+      "svm__C": 10,
+      "svm__gamma": 0.01
+    },
+    "shape": [
+      400,
+      9
+    ]
+  },
+  {
+    "name": "Shape only (tort+curv+std)",
+    "auc": 0.8380555555555556,
+    "acc": 0.7333333333333333,
+    "best_params": {
+      "svm__C": 1,
+      "svm__gamma": "scale"
+    },
+    "shape": [
+      400,
+      27
+    ]
+  },
+  {
+    "name": "Minimal (H_raw + shape)",
+    "auc": 0.861388888888889,
+    "acc": 0.7833333333333333,
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    },
+    "shape": [
+      400,
+      36
+    ]
+  },
+  {
+    "name": "H_res (residual)",
+    "auc": 0.8188888888888889,
+    "acc": 0.7416666666666667,
+    "best_params": {
+      "svm__C": 10,
+      "svm__gamma": 0.01
+    },
+    "shape": [
+      400,
+      9
+    ]
+  },
+  {
+    "name": "Minimal + H_res",
+    "auc": 0.8522222222222222,
+    "acc": 0.7666666666666667,
+    "best_params": {
+      "svm__C": 1,
+      "svm__gamma": 0.01
+    },
+    "shape": [
+      400,
+      45
+    ]
+  }
+]

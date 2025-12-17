@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Baseline",
+    "auc": 0.7777777777777779,
+    "acc": 0.7222222222222222,
+    "shape": [
+      300,
+      36
+    ],
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "H1_Spectrum",
+    "auc": 0.6192592592592592,
+    "acc": 0.5555555555555556,
+    "shape": [
+      300,
+      21
+    ],
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "H2_ScaleLaw",
+    "auc": 0.7688888888888888,
+    "acc": 0.7,
+    "shape": [
+      300,
+      5
+    ],
+    "best_params": {
+      "svm__C": 0.3,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "H3_Consistency",
+    "auc": 0.6750617283950617,
+    "acc": 0.6444444444444445,
+    "shape": [
+      300,
+      4
+    ],
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "H4_PatchCoupled",
+    "auc": 0.6251851851851852,
+    "acc": 0.5555555555555556,
+    "shape": [
+      300,
+      4
+    ],
+    "best_params": {
+      "svm__C": 10,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "H5_Tensor",
+    "auc": 0.6933333333333334,
+    "acc": 0.6222222222222222,
+    "shape": [
+      300,
+      6
+    ],
+    "best_params": {
+      "svm__C": 10,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "H6_Orthogonality",
+    "auc": 0.6953086419753087,
+    "acc": 0.6,
+    "shape": [
+      300,
+      4
+    ],
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "Baseline + H2_ScaleLaw",
+    "auc": 0.7792592592592592,
+    "acc": 0.7333333333333333,
+    "shape": [
+      300,
+      41
+    ],
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    }
+  },
+  {
+    "name": "ALL Combined",
+    "auc": 0.7792592592592592,
+    "acc": 0.7,
+    "shape": [
+      300,
+      80
+    ],
+    "best_params": {
+      "svm__C": 3,
+      "svm__gamma": 0.01
+    }
+  }
+]
