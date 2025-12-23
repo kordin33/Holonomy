@@ -1,7 +1,51 @@
 """
-visualization.py - Wizualizacja Embeddings
+visualization.py - Embedding Visualization for Deepfake Detection
+==================================================================
 
-t-SNE, UMAP, clustering visualization, decision boundaries
+Comprehensive visualization tools for analyzing embedding distributions
+and understanding model decisions.
+
+METHODS:
+--------
+    1. t-SNE: Non-linear dimensionality reduction (good for local structure)
+    2. UMAP: Faster alternative to t-SNE (better global structure)
+    3. PaCMAP: Preserves both local and global structure
+
+VISUALIZATIONS:
+---------------
+    - plot_tsne(): 2D t-SNE projection with Real/Fake coloring
+    - plot_umap(): 2D UMAP projection
+    - plot_similarity_heatmap(): Query vs database similarities
+    - plot_cluster_analysis(): Silhouette score, K-means accuracy
+    - plot_knn_explanation(): Explain k-NN predictions
+
+USAGE:
+------
+    from deepfake_guard.embeddings.visualization import EmbeddingVisualizer
+    
+    viz = EmbeddingVisualizer(figsize=(12, 8))
+    
+    # t-SNE visualization
+    viz.plot_tsne(embeddings, labels, save_path="tsne.png")
+    
+    # Cluster analysis with metrics
+    metrics = viz.plot_cluster_analysis(embeddings, labels)
+    print(f"Silhouette: {metrics['silhouette_score']:.3f}")
+    print(f"K-Means Acc: {metrics['kmeans_accuracy']:.3f}")
+    
+    # k-NN explanation
+    viz.plot_knn_explanation(query, db_embeddings, db_labels, "real")
+
+METRICS COMPUTED:
+-----------------
+    - inter_class_distance: Distance between class centroids
+    - intra_class_distance: Average within-class spread
+    - silhouette_score: Cluster quality measure
+    - kmeans_accuracy: Unsupervised clustering accuracy
+    - separation_ratio: inter / intra distance ratio
+
+AUTHOR: Konrad Kenczuk
+VERSION: 1.0.0
 """
 
 from __future__ import annotations

@@ -1,9 +1,46 @@
 """
-encoders.py - Image Encoders for Embedding Extraction
+encoders.py - Vision Encoders for Loop Holonomy Feature Extraction
+===================================================================
 
-Wspierane enkodery:
-- CLIP (OpenAI) - ViT-B/32, ViT-L/14
-- DINOv2 (Meta) - dla przyszłych stopni
+This module provides encoder wrappers for extracting high-dimensional
+embeddings from images. These embeddings form the basis for holonomy
+feature computation.
+
+SUPPORTED ENCODERS:
+-------------------
+
+1. CLIP (OpenAI) - Recommended
+   - ViT-B/32: 512D embedding, fastest
+   - ViT-L/14: 768D embedding, best quality ⭐
+   - ViT-L/14@336px: 768D, highest resolution
+   
+2. DINOv2 (Meta) - Alternative
+   - dinov2_vitb14: 768D, self-supervised
+   - Better for texture/pattern features
+   - No text supervision bias
+
+USAGE:
+------
+    from deepfake_guard.embeddings.encoders import get_encoder
+    
+    # For production (recommended)
+    encoder = get_encoder("clip", "ViT-L/14", device="cuda")
+    
+    # Single image
+    embedding = encoder.encode_pil(image)  # [768]
+    
+    # Batch of images
+    embeddings = encoder.encode_batch(images, batch_size=32)  # [N, 768]
+
+MATHEMATICAL PROPERTIES:
+------------------------
+- All outputs are L2-normalized: ||z||_2 = 1
+- Embeddings lie on unit hypersphere S^{d-1}
+- Cosine similarity = dot product for normalized vectors
+- Chordal distance: d(a,b) = ||a-b|| = sqrt(2 - 2*a·b)
+
+AUTHOR: Konrad Kenczuk
+VERSION: 1.0.0
 """
 
 from __future__ import annotations

@@ -1,7 +1,46 @@
 """
 vector_db.py - Vector Database for Embedding Storage & Retrieval
+=================================================================
 
-Używa ChromaDB lub FAISS dla szybkiego similarity search.
+Multi-backend vector database for storing and querying image embeddings.
+Supports fast similarity search for k-NN based deepfake classification.
+
+BACKENDS:
+---------
+    1. NumPy (default): Pure Python, no dependencies, works everywhere
+    2. ChromaDB: Easy to use, persistent storage, good for prototyping
+    3. FAISS: Fastest for large datasets (100K+ embeddings)
+
+USAGE:
+------
+    from deepfake_guard.embeddings.vector_db import DeepfakeVectorDB
+    
+    # Create database
+    db = DeepfakeVectorDB(backend="numpy")
+    
+    # Add embeddings with labels
+    db.add(embeddings, labels=["real", "fake", "fake", ...])
+    
+    # Query nearest neighbors
+    results = db.query(query_embedding, k=10)
+    
+    # k-NN classification
+    prediction = db.classify_knn(query_embedding, k=10)
+    # Returns: {'prediction': 'real', 'confidence': 0.87, ...}
+    
+    # Centroid-based classification
+    prediction = db.classify_centroid(query_embedding)
+
+FEATURES:
+---------
+    - Cosine similarity search (L2 normalized embeddings)
+    - Weighted k-NN voting (similarity-weighted)
+    - Centroid-based classification
+    - Database persistence (save/load)
+    - Statistics and analysis
+
+AUTHOR: Konrad Kenczuk
+VERSION: 1.0.0
 """
 
 from __future__ import annotations

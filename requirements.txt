@@ -1,34 +1,58 @@
-# Deepfake Detection Research - Requirements
+# Loop Holonomy Deepfake Detection - Requirements
 # Python 3.8+
 
-# Core
+# ============================================================================
+# CORE DEPENDENCIES
+# ============================================================================
+
+# PyTorch (install with CUDA support if GPU available)
+# Visit https://pytorch.org for installation command
 torch>=2.0.0
 torchvision>=0.15.0
 
-# Data & ML
+# OpenAI CLIP (install separately)
+# pip install git+https://github.com/openai/CLIP.git
+
+# ============================================================================
+# DATA & ML
+# ============================================================================
+
 numpy>=1.21.0
+scipy>=1.7.0
 scikit-learn>=1.0.0
 pillow>=9.0.0
-opencv-python-headless>=4.5.0
 
-# Visualization
+# ============================================================================
+# VISUALIZATION
+# ============================================================================
+
 matplotlib>=3.5.0
 seaborn>=0.12.0
 
-# Training utilities
+# ============================================================================
+# UTILITIES
+# ============================================================================
+
 tqdm>=4.64.0
 
-# Optional: Experiment tracking
+# ============================================================================
+# OPTIONAL: Experiment Tracking
+# ============================================================================
+
 # wandb>=0.15.0
 
-# Optional: HuggingFace (for dataset downloading)
-# datasets>=2.0.0
-# huggingface_hub>=0.14.0
+# ============================================================================
+# OPTIONAL: Advanced Visualization
+# ============================================================================
 
-# Optional: Face detection for SBI
-# facenet-pytorch>=2.5.0
+# pacmap>=0.6.0          # For PaCMAP embeddings
+# umap-learn>=0.5.0      # For UMAP embeddings
 
-# Development
+# ============================================================================
+# DEVELOPMENT (for contributors)
+# ============================================================================
+
 # pytest>=7.0.0
 # black>=22.0.0
 # flake8>=4.0.0
+# mypy>=0.950
